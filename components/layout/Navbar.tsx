@@ -1,0 +1,227 @@
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useLang } from "@/i18n/LanguageContext";
+import { IconMenu, IconX } from "@/components/icons/Icons";
+
+export default function Navbar({ initialSolid = false }: { initialSolid?: boolean }) {
+  const [scrolled, setScrolled] = useState(initialSolid);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { lang, t, toggle } = useLang();
+
+  const links = [
+    { href: "/", label: t.nav.home },
+    { href: "/accompagnement", label: t.nav.services },
+    { href: "/portfolio", label: t.nav.portfolio },
+    { href: "/methode", label: t.nav.method },
+    { href: "/contact", label: t.nav.contact },
+  ];
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <motion.nav
+      initial={{ y: -68, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="site-nav"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        padding: "0 40px",
+        height: 68,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        transition: "background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease",
+        background: scrolled ? "rgba(7,18,42,0.97)" : "rgba(255,255,255,0.92)",
+        backdropFilter: scrolled ? "blur(20px)" : "blur(12px)",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.10)" : "1px solid rgba(10,10,15,0.06)",
+      }}
+    >
+      <Link href="/" aria-label={t.nav.homeAria} style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+        <Image
+          src="/logos/proodz-logo.svg"
+          alt="Proodz"
+          width={132}
+          height={24}
+          priority
+          style={{
+            objectFit: "contain",
+            display: "block",
+            width: "clamp(108px, 20vw, 132px)",
+            height: "auto",
+            filter: scrolled ? "brightness(0) invert(1)" : "none",
+            transition: "filter 0.3s ease",
+          }}
+        />
+      </Link>
+
+      <div style={{ display: "flex", gap: 32, alignItems: "center" }} className="nav-desktop">
+        {links.map((l) => (
+          <motion.a
+            key={l.href}
+            href={l.href}
+            whileHover={{ color: scrolled ? "#FFFFFF" : "#0A0A0F" }}
+            style={{
+              color: scrolled ? "rgba(255,255,255,0.78)" : "rgba(10,10,15,0.65)",
+              textDecoration: "none",
+              fontSize: 14,
+              fontWeight: 500,
+              transition: "color 0.3s ease",
+            }}
+          >
+            {l.label}
+          </motion.a>
+        ))}
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <motion.button
+          onClick={toggle}
+          whileHover={{ borderColor: scrolled ? "rgba(255,255,255,0.45)" : "rgba(67,97,238,0.3)", color: scrolled ? "#FFFFFF" : "#0A0A0F" }}
+          aria-label={t.misc.langToggle}
+          style={{
+            fontSize: 12,
+            color: scrolled ? "rgba(255,255,255,0.7)" : "rgba(10,10,15,0.55)",
+            border: scrolled ? "1px solid rgba(255,255,255,0.22)" : "1px solid rgba(10,10,15,0.1)",
+            padding: "10px 14px",
+            minHeight: 42,
+            borderRadius: 6,
+            background: "transparent",
+            cursor: "pointer",
+            fontFamily: "var(--font-inter), 'Inter', sans-serif",
+            transition: "color 0.3s ease, border-color 0.3s ease",
+          }}
+        >
+          <span style={{ color: scrolled ? (lang === "fr" ? "#FFFFFF" : "rgba(255,255,255,0.5)") : (lang === "fr" ? "#0A0A0F" : "rgba(10,10,15,0.4)") }}>FR</span>
+          {" | "}
+          <span style={{ color: scrolled ? (lang === "en" ? "#FFFFFF" : "rgba(255,255,255,0.5)") : (lang === "en" ? "#0A0A0F" : "rgba(10,10,15,0.4)") }}>EN</span>
+        </motion.button>
+        <motion.a
+          href="/contact"
+          whileHover={{ scale: 1.05, y: -1, boxShadow: "0 6px 24px rgba(67,97,238,0.3)" }}
+          whileTap={{ scale: 0.98 }}
+          className="nav-cta-top"
+          style={{
+            background: "#4361EE",
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: 14,
+            padding: "10px 24px",
+            borderRadius: 8,
+            textDecoration: "none",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {t.nav.cta} →
+        </motion.a>
+
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{
+            display: "none",
+            background: "none",
+            border: "none",
+            color: scrolled ? "#FFFFFF" : "#0A0A0F",
+            fontSize: 24,
+            cursor: "pointer",
+            padding: 8,
+            transition: "color 0.3s ease",
+          }}
+          className="nav-burger"
+          aria-label={menuOpen ? t.misc.menuClose : t.misc.menuOpen}
+        >
+          {menuOpen ? <IconX size={22} /> : <IconMenu size={22} />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            style={{
+              position: "absolute",
+              top: 68,
+              left: 0,
+              right: 0,
+              background: "rgba(255,255,255,0.97)",
+              backdropFilter: "blur(20px)",
+              borderBottom: "1px solid rgba(10,10,15,0.08)",
+              padding: "24px 40px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 20,
+            }}
+            className="nav-mobile-menu"
+          >
+            <Image
+              src="/logos/proodz-logo.svg"
+              alt="Proodz"
+              width={110}
+              height={20}
+              style={{ objectFit: "contain", display: "block", width: 110, height: "auto", marginBottom: 4 }}
+            />
+            {links.map((l, i) => (
+              <motion.a
+                key={l.href}
+                href={l.href}
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.06 }}
+                onClick={() => setMenuOpen(false)}
+                style={{ color: "#0A0A0F", textDecoration: "none", fontSize: 16, fontWeight: 500 }}
+              >
+                {l.label}
+              </motion.a>
+            ))}
+            <motion.a
+              href="/contact"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                background: "#4361EE",
+                color: "#fff",
+                fontWeight: 700,
+                fontSize: 15,
+                padding: "12px 24px",
+                borderRadius: 10,
+                textDecoration: "none",
+                textAlign: "center",
+              }}
+            >
+              {t.nav.cta} →
+            </motion.a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .nav-desktop { display: none !important; }
+          .nav-burger { display: flex !important; }
+        }
+        @media (max-width: 640px) {
+          .site-nav { padding: 0 16px !important; }
+          .nav-cta-top { display: none !important; }
+          .nav-burger { padding: 8px 4px !important; }
+          .nav-mobile-menu { padding: 20px 16px !important; }
+        }
+      `}</style>
+    </motion.nav>
+  );
+}
