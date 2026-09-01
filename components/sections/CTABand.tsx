@@ -17,6 +17,7 @@ export default function CTABand() {
         sizes="100vw"
         className="cta-band-bg"
         style={{ objectFit: "cover", objectPosition: "center 30%" }}
+        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/visual-placeholder.svg"; }}
       />
 
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(7,27,69,0.74) 0%, rgba(7,27,69,0.86) 55%, rgba(7,27,69,0.97) 100%)", pointerEvents: "none" }} />

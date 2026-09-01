@@ -52,6 +52,7 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
         <Image
           src="/logos/proodz-logo.svg"
           alt="Proodz"
+          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/logo-placeholder.svg"; }}
           width={132}
           height={24}
           priority
@@ -170,6 +171,7 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
             <Image
               src="/logos/proodz-logo.svg"
               alt="Proodz"
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/logo-placeholder.svg"; }}
               width={110}
               height={20}
               style={{ objectFit: "contain", display: "block", width: 110, height: "auto", marginBottom: 4 }}

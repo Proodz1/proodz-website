@@ -51,6 +51,7 @@ export default function Hero() {
           priority
           className="hero-bg"
           style={{ objectFit: "cover", objectPosition: "center top" }}
+          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/visual-placeholder.svg"; }}
         />
         <div style={{ position: "absolute", inset: 0, background: "rgba(5,18,45,0.55)", pointerEvents: "none" }} />
       </div>

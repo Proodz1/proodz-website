@@ -340,6 +340,7 @@ export default function LogoIntro() {
                 <Image
                   src="/logos/proodz-logo.svg"
                   alt="Proodz — logo"
+                  onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/logo-placeholder.svg"; }}
                   width={340}
                   height={62}
                   priority
