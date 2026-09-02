@@ -49,6 +49,14 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
       }}
     >
       <Link href="/" aria-label={t.nav.homeAria} style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+        <motion.span
+          initial={{ opacity: 0, y: -5, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          whileHover={{ scale: 1.035 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="brand-logo-wrap"
+          style={{ display: "inline-flex", alignItems: "center", borderRadius: 8 }}
+        >
         <Image
           src="/logos/proodz-logo.svg"
           alt="Proodz"
@@ -65,6 +73,7 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
             transition: "filter 0.3s ease",
           }}
         />
+        </motion.span>
       </Link>
 
       <div style={{ display: "flex", gap: 32, alignItems: "center" }} className="nav-desktop">
@@ -223,6 +232,8 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
           .nav-burger { padding: 8px 4px !important; }
           .nav-mobile-menu { padding: 20px 16px !important; }
         }
+        .brand-logo-wrap { filter: drop-shadow(0 0 0 rgba(61,90,255,0)); transition: filter 0.35s ease; }
+        .brand-logo-wrap:hover { filter: drop-shadow(0 0 8px rgba(61,90,255,0.42)); }
       `}</style>
     </motion.nav>
   );
