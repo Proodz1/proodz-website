@@ -105,7 +105,7 @@ export default function AccompagnementPage() {
 
       {/* FINAL CTA */}
       <section style={{ position: "relative", padding: "110px 24px", overflow: "hidden", isolation: "isolate" }}>
-        <Image src="/banners/banner2.jpg" alt="" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 30%" }} />
+        <Image src="/assets/banners/banner2.jpg" alt="" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 30%" }} />
         <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(7,27,69,0.74) 0%, rgba(7,27,69,0.86) 55%, rgba(7,27,69,0.97) 100%)", pointerEvents: "none" }} />
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} style={{ position: "relative", zIndex: 2, maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ fontFamily: "var(--font-space), 'Space Grotesk', sans-serif", fontSize: "clamp(28px, 4.5vw, 44px)", fontWeight: 800, lineHeight: 1.12, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#FFFFFF", margin: "0 0 12px", whiteSpace: "pre-line" }}>

@@ -9,7 +9,7 @@ export default function JsonLd() {
         url: "https://proodz.com",
         logo: {
           "@type": "ImageObject",
-          url: "https://proodz.com/logos/proodz-logo.svg",
+          url: "https://proodz.com/assets/logos/proodz-logo.svg",
         },
         contactPoint: {
           "@type": "ContactPoint",

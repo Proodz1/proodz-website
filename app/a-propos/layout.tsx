@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: "Proodz",
     locale: "fr_FR",
     type: "website",
-    images: [{ url: "/banners/banner2.jpg", width: 2048, height: 1152, alt: fr.seo.about.title }],
+    images: [{ url: "/assets/banners/banner2.jpg", width: 2048, height: 1152, alt: fr.seo.about.title }],
   },
   alternates: { canonical: "/a-propos" },
 };

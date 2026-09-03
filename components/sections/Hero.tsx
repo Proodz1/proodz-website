@@ -44,14 +44,14 @@ export default function Hero() {
     >
       <div className="hero-bg-layer" style={{ position: "absolute", top: 68, left: 0, right: 0, bottom: 0, overflow: "hidden" }}>
         <Image
-          src="/banners/6-3.jpg"
+          src="/assets/banners/6-3.jpg"
           alt={t.hero.bannerAlt}
           fill
           sizes="100vw"
           priority
           className="hero-bg"
           style={{ objectFit: "cover", objectPosition: "center 32%" }}
-          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/visual-placeholder.svg"; }}
+          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/assets/visual-placeholder.svg"; }}
         />
         <div style={{ position: "absolute", inset: 0, background: "rgba(5,18,45,0.55)", pointerEvents: "none" }} />
       </div>

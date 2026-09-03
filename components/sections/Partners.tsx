@@ -5,33 +5,33 @@ import { fadeInUp } from "../animations/variants";
 import { useLang } from "@/i18n/LanguageContext";
 
 const featuredPartners = [
-  { name: "Monoprix", logo: "/logos/monoprix.png" },
-  { name: "Energy Rent a Car", logo: "/logos/energy-rent-a-car.png" },
-  { name: "Dar Al Hana", logo: "/logos/dar-al-hana.png" },
-  { name: "Padel Pro Club", logo: "/logos/padel-pro-club.png" },
+  { name: "Monoprix", logo: "/assets/logos/monoprix.png" },
+  { name: "Energy Rent a Car", logo: "/assets/logos/energy-rent-a-car.png" },
+  { name: "Dar Al Hana", logo: "/assets/logos/dar-al-hana.png" },
+  { name: "Padel Pro Club", logo: "/assets/logos/padel-pro-club.png" },
 ];
 
 const partners = [
-  { name: "Boom Snap", logo: "/logos/boomsnap.jpg" },
-  { name: "Global Insights", logo: "/logos/global-insights.png" },
-  { name: "Global Trust Finance", logo: "/logos/global-trust-finance.png" },
-  { name: "Jasmin Travel", logo: "/logos/jasmin-travel.png" },
-  { name: "PDS", logo: "/logos/pds.jpg" },
-  { name: "Académie Pro", logo: "/logos/academie-pro.png" },
-  { name: "Carthage Estates", logo: "/logos/carthage-estates.png" },
-  { name: "Carthage Motors", logo: "/logos/carthage-motors.png" },
-  { name: "Elite Academy", logo: "/logos/elite-academy.png" },
-  { name: "Aussui", logo: "/logos/aussui.jpg" },
-  { name: "Envnt", logo: "/logos/envnt.jpg" },
-  { name: "Synergy Partners", logo: "/logos/synergy-partners.png" },
-  { name: "Padel Arena", logo: "/logos/padel-arena.png" },
-  { name: "Glow Essence", logo: "/logos/glow-essence.png" },
-  { name: "Luxe Furniture", logo: "/logos/luxe-furniture.png" },
-  { name: "Pure Beauty", logo: "/logos/pure-beauty.png" },
-  { name: "Global Heights", logo: "/logos/global-heights.png" },
-  { name: "Artisanat Design", logo: "/logos/artisanat-design.png" },
-  { name: "Wanderlust Expeditions", logo: "/logos/wanderlust-expeditions.png" },
-  { name: "Modern Living", logo: "/logos/modern-living.png" },
+  { name: "Boom Snap", logo: "/assets/logos/boomsnap.jpg" },
+  { name: "Global Insights", logo: "/assets/logos/global-insights.png" },
+  { name: "Global Trust Finance", logo: "/assets/logos/global-trust-finance.png" },
+  { name: "Jasmin Travel", logo: "/assets/logos/jasmin-travel.png" },
+  { name: "PDS", logo: "/assets/logos/pds.jpg" },
+  { name: "Académie Pro", logo: "/assets/logos/academie-pro.png" },
+  { name: "Carthage Estates", logo: "/assets/logos/carthage-estates.png" },
+  { name: "Carthage Motors", logo: "/assets/logos/carthage-motors.png" },
+  { name: "Elite Academy", logo: "/assets/logos/elite-academy.png" },
+  { name: "Aussui", logo: "/assets/logos/aussui.jpg" },
+  { name: "Envnt", logo: "/assets/logos/envnt.jpg" },
+  { name: "Synergy Partners", logo: "/assets/logos/synergy-partners.png" },
+  { name: "Padel Arena", logo: "/assets/logos/padel-arena.png" },
+  { name: "Glow Essence", logo: "/assets/logos/glow-essence.png" },
+  { name: "Luxe Furniture", logo: "/assets/logos/luxe-furniture.png" },
+  { name: "Pure Beauty", logo: "/assets/logos/pure-beauty.png" },
+  { name: "Global Heights", logo: "/assets/logos/global-heights.png" },
+  { name: "Artisanat Design", logo: "/assets/logos/artisanat-design.png" },
+  { name: "Wanderlust Expeditions", logo: "/assets/logos/wanderlust-expeditions.png" },
+  { name: "Modern Living", logo: "/assets/logos/modern-living.png" },
 ];
 
 function LogoTrack({ logos, speed, ...rest }: { logos: typeof partners; speed: number } & React.HTMLAttributes<HTMLDivElement>) {
@@ -82,7 +82,7 @@ function LogoTrack({ logos, speed, ...rest }: { logos: typeof partners; speed: n
             onError={(e) => {
               const img = e.currentTarget;
               img.onerror = null;
-              img.src = "/logo-placeholder.svg";
+              img.src = "/assets/logo-placeholder.svg";
             }}
             onMouseEnter={(e) => {
               const img = e.target as HTMLImageElement;
@@ -162,7 +162,7 @@ export default function Partners() {
                 onError={(e) => {
                   const img = e.currentTarget;
                   img.onerror = null;
-                  img.src = "/logo-placeholder.svg";
+                  img.src = "/assets/logo-placeholder.svg";
                 }}
               />
             </div>

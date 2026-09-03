@@ -65,12 +65,12 @@ export default function AboutPage() {
             }}
           >
             <Image
-              src="/banners/office.jpg"
+              src="/assets/banners/office.jpg"
               alt="Le logo Proodz gravé sur un mur en béton — symbole de la continuité et de la précision qui guident notre approche"
               fill
               sizes="(max-width: 768px) 100vw, 460px"
               style={{ objectFit: "cover" }}
-              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/visual-placeholder.svg"; }}
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src="/assets/visual-placeholder.svg"; }}
             />
           </motion.div>
 

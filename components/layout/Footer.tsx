@@ -40,9 +40,9 @@ export default function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 48, marginBottom: 40 }} className="footer-grid">
           <motion.div variants={footerColumn(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
             <Image
-              src="/logos/proodz-logo.svg"
+              src="/assets/logos/proodz-logo.svg"
               alt="Proodz"
-              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/logo-placeholder.svg"; }}
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/assets/logo-placeholder.svg"; }}
               width={150}
               height={27}
               style={{ objectFit: "contain", display: "block", width: "clamp(130px, 24vw, 150px)", height: "auto", marginBottom: 12, filter: "brightness(1.5)" }}

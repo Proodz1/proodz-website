@@ -148,8 +148,8 @@ proodz-site-source/
 │   ├── logos/                  # Logos clients (28 fichiers)
 │   ├── banners/                # Bannières (3 fichiers)
 │   ├── portfolio/              # Médias portfolio (50+ fichiers)
-│   ├── logo-placeholder.svg    # Fallback logos
-│   └── visual-placeholder.svg  # Fallback images
+├── logo-placeholder.svg    # Fallback logos
+└── visual-placeholder.svg  # Fallback images
 │
 ├── next.config.ts              # Config Next.js (security headers, standalone)
 ├── tsconfig.json               # TypeScript strict

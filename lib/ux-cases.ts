@@ -21,7 +21,7 @@ export interface UxCaseStudy {
 
 const thryveVisuals = Array.from(
   { length: 15 },
-  (_, i) => `/portfolio/thryve/th-${String(i + 1).padStart(2, "0")}.webp`,
+  (_, i) => `/assets/portfolio/thryve/th-${String(i + 1).padStart(2, "0")}.webp`,
 );
 
 export const uxCaseStudies: UxCaseStudy[] = [
@@ -29,7 +29,7 @@ export const uxCaseStudies: UxCaseStudy[] = [
     slug: "thryve",
     clientName: "Thryve",
     category: "ux-design",
-    coverVisual: "/portfolio/thryve/th-01.webp",
+    coverVisual: "/assets/portfolio/thryve/th-01.webp",
     shortDescriptionFr: "Concept de marque axé sur l'IA : identité, logo et direction artistique.",
     shortDescriptionEn: "AI-driven brand concept: identity, logo and art direction.",
     introductionFr:

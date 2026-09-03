@@ -103,9 +103,9 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
           style={{ display: "inline-flex", alignItems: "center", borderRadius: 8 }}
         >
         <Image
-          src="/logos/proodz-logo.svg"
+          src="/assets/logos/proodz-logo.svg"
           alt="Proodz"
-          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/logo-placeholder.svg"; }}
+          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/assets/logo-placeholder.svg"; }}
           width={132}
           height={24}
           priority
@@ -235,9 +235,9 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
             className="nav-mobile-menu"
           >
             <Image
-              src="/logos/proodz-logo.svg"
+              src="/assets/logos/proodz-logo.svg"
               alt="Proodz"
-              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/logo-placeholder.svg"; }}
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/assets/logo-placeholder.svg"; }}
               width={110}
               height={20}
               style={{ objectFit: "contain", display: "block", width: 110, height: "auto", marginBottom: 4 }}

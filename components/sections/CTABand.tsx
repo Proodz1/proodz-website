@@ -11,13 +11,13 @@ export default function CTABand() {
   return (
     <section style={{ position: "relative", padding: "120px 24px", overflow: "hidden", isolation: "isolate" }}>
       <Image
-        src="/banners/banner2.jpg"
+        src="/assets/banners/banner2.jpg"
         alt={t.ctaBand.bannerAlt}
         fill
         sizes="100vw"
         className="cta-band-bg"
         style={{ objectFit: "cover", objectPosition: "center 30%" }}
-        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/visual-placeholder.svg"; }}
+        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/assets/visual-placeholder.svg"; }}
       />
 
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(7,27,69,0.74) 0%, rgba(7,27,69,0.86) 55%, rgba(7,27,69,0.97) 100%)", pointerEvents: "none" }} />

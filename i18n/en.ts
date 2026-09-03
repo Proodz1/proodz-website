@@ -41,11 +41,11 @@ export const en: Translations = {
   },
   sectors: {
     label: "Sectors",
-    title1: "ACCOMPANIMENT BY ",
-    title2: "SECTOR",
+    title1: "SECTOR-SPECIFIC ",
+    title2: "SUPPORT",
     subtitle: "Strategies built for the specific challenges of your sector.",
     cta: "Explore",
-    contactLine: "Sector-specific accompaniment:",
+    contactLine: "Sector-specific support:",
   },
   services: {
     label: "Our expertise",
@@ -279,7 +279,7 @@ export const en: Translations = {
   },
   contactPage: {
     label: "CONTACT",
-    title1: "LET'S TALK ABOUT YOUR PROJECT.\nLET'S BUILD ITS ",
+    title1: "LET'S TALK ABOUT YOUR PROJECT.\nLET'S BUILD YOUR ",
     title2: "GROWTH.",
     subtitle: "Tell us where you are today. We help you identify the priorities, opportunities and actions that can move your business forward.",
     trustLine: "Response within 24h · Free initial diagnostic · No commitment",
@@ -457,7 +457,7 @@ export const en: Translations = {
     about: {
       title: "About Proodz — Digital Transformation Agency in Tunisia",
       description:
-        "Discover Proodz: our mission, our commitments and our strategic support for Tunisian and international businesses. 10+ partners, 4 years of experience.",
+        "Discover Proodz: our mission, our commitments and our strategic support for Tunisian and international businesses. +10 partners, +4 years of experience.",
     },
   },
   notFound: {

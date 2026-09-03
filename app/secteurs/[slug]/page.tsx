@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: "Proodz",
       locale: "fr_FR",
       type: "website",
-      images: [{ url: "/banners/banner2.jpg", width: 2048, height: 1152, alt: `Proodz — ${fr.name}` }],
+      images: [{ url: "/assets/banners/banner2.jpg", width: 2048, height: 1152, alt: `Proodz — ${fr.name}` }],
     },
   };
 }

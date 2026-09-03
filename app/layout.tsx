@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     siteName: "Proodz",
     locale: "fr_FR",
     type: "website",
-    images: [{ url: "/banners/banner2.jpg", width: 2048, height: 1152, alt: fr.seo.home.title }],
+    images: [{ url: "/assets/banners/banner2.jpg", width: 2048, height: 1152, alt: fr.seo.home.title }],
   },
   twitter: {
     card: "summary_large_image",
     title: fr.seo.home.title,
     description: fr.seo.home.description,
-    images: ["/banners/banner2.jpg"],
+    images: ["/assets/banners/banner2.jpg"],
   },
   alternates: {
     canonical: "/",

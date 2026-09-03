@@ -473,7 +473,7 @@ export default function Portfolio() {
 
       {/* FINAL CTA */}
       <section style={{ position: "relative", padding: "110px 24px", overflow: "hidden", isolation: "isolate" }}>
-        <Image src="/banners/banner2.jpg" alt={t.portfolio.bannerAlt} fill sizes="100vw" className="pf-cta-bg" style={{ objectFit: "cover", objectPosition: "center 30%" }} />
+        <Image src="/assets/banners/banner2.jpg" alt={t.portfolio.bannerAlt} fill sizes="100vw" className="pf-cta-bg" style={{ objectFit: "cover", objectPosition: "center 30%" }} />
         <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(7,27,69,0.74) 0%, rgba(7,27,69,0.86) 55%, rgba(7,27,69,0.97) 100%)", pointerEvents: "none" }} />
         <motion.div
           variants={fadeInUp}

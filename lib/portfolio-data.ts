@@ -32,14 +32,14 @@ export interface Client {
   projects: Project[];
 }
 
-const immobilierImages = Array.from({ length: 9 }, (_, i) => `/portfolio/immobilier/immobilier-${i + 1}.png`);
-const padelsImages = Array.from({ length: 10 }, (_, i) => `/portfolio/padels/padels-${i + 1}.png`);
-const synergyImages = Array.from({ length: 10 }, (_, i) => `/portfolio/synergy/synergy-${i + 1}.png`);
-const glowEssenceImages = Array.from({ length: 9 }, (_, i) => `/portfolio/glow-essence/glow-essence-${i + 1}.png`);
-const cellsiusImages = Array.from({ length: 13 }, (_, i) => `/portfolio/cellsius/cellsius-img-${i + 1}.png`);
-const cellsiusVideos = Array.from({ length: 8 }, (_, i) => `/portfolio/cellsius/cellsius-video-${i + 1}.mp4`);
-const energyImages = Array.from({ length: 7 }, (_, i) => `/portfolio/energy/energy-${i + 1}.png`);
-const energyVideo = "/portfolio/energy/energy-video-1.mp4";
+const immobilierImages = Array.from({ length: 9 }, (_, i) => `/assets/portfolio/immobilier/immobilier-${i + 1}.png`);
+const padelsImages = Array.from({ length: 10 }, (_, i) => `/assets/portfolio/padels/padels-${i + 1}.png`);
+const synergyImages = Array.from({ length: 10 }, (_, i) => `/assets/portfolio/synergy/synergy-${i + 1}.png`);
+const glowEssenceImages = Array.from({ length: 9 }, (_, i) => `/assets/portfolio/glow-essence/glow-essence-${i + 1}.png`);
+const cellsiusImages = Array.from({ length: 13 }, (_, i) => `/assets/portfolio/cellsius/cellsius-img-${i + 1}.png`);
+const cellsiusVideos = Array.from({ length: 8 }, (_, i) => `/assets/portfolio/cellsius/cellsius-video-${i + 1}.mp4`);
+const energyImages = Array.from({ length: 7 }, (_, i) => `/assets/portfolio/energy/energy-${i + 1}.png`);
+const energyVideo = "/assets/portfolio/energy/energy-video-1.mp4";
 
 export const clients: Client[] = [
   {
@@ -76,7 +76,7 @@ export const clients: Client[] = [
   {
     name: "Heights",
     slug: "immobilier",
-    logo: "/logos/global-heights.png",
+    logo: "/assets/logos/global-heights.png",
     sector: { fr: "Immobilier & Construction", en: "Real Estate & Construction" },
     description: {
       fr: "Promoteur immobilier haut de gamme. Production de visites virtuelles, vidéos de présentation de projets et supports de vente digitaux pour le marché international.",
@@ -88,7 +88,7 @@ export const clients: Client[] = [
   {
     name: "Padel Arena",
     slug: "sport-loisirs",
-    logo: "/logos/padel-arena.png",
+    logo: "/assets/logos/padel-arena.png",
     sector: { fr: "Sport & Loisirs", en: "Sports & Leisure" },
     description: {
       fr: "Complexe de padel premium. Direction artistique, contenus visuels dynamiques pour les réseaux sociaux et supports de communication événementielle.",
@@ -100,7 +100,7 @@ export const clients: Client[] = [
   {
     name: "Synergy Partners",
     slug: "conseil-strategie",
-    logo: "/logos/synergy-partners.png",
+    logo: "/assets/logos/synergy-partners.png",
     sector: { fr: "Conseil & Stratégie", en: "Consulting & Strategy" },
     description: {
       fr: "Cabinet de conseil en stratégie et partenariats commerciaux. Identité visuelle premium, contenus corporate et supports de communication pour le marché international.",
@@ -162,7 +162,7 @@ export const clients: Client[] = [
   },
   {
     name: "Energy Rent a Car",
-    logo: "/logos/clients/energy-rent-a-car.png",
+    logo: "/assets/logos/clients/energy-rent-a-car.png",
     sector: { fr: "Location de voitures", en: "Car Rental" },
     description: {
       fr: "Energy Rent a Car est une entreprise de location de voitures à Tunis. Proodz l’accompagne dans le renforcement de sa présence digitale afin de mieux présenter son offre, faciliter les demandes de réservation et attirer des clients qualifiés.",
