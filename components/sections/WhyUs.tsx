@@ -140,6 +140,8 @@ export default function WhyUs() {
         >
           <motion.a
             href="/contact"
+            data-ga-event="cta_click"
+            data-ga-label="whyus_diagnostic"
             whileHover={{ y: -2, boxShadow: "0 12px 40px rgba(65,105,255,0.45)" }}
             whileTap={{ scale: 0.98 }}
             style={{

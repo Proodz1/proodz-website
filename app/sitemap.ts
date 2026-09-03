@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/accompagnement",
     "/portfolio",
     "/methode",
+    "/a-propos",
     "/contact",
   ];
 

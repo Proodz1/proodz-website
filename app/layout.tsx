@@ -4,6 +4,10 @@ import Providers from "@/components/Providers";
 import LogoIntro from "@/components/animations/LogoIntro";
 import RouteMetadata from "@/components/seo/RouteMetadata";
 import JsonLd from "@/components/seo/JsonLd";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import ConsentBanner from "@/components/analytics/ConsentBanner";
+import AnalyticsListener from "@/components/analytics/AnalyticsListener";
+import Chatbot from "@/components/sections/Chatbot";
 import { fr } from "@/i18n/fr";
 import "./globals.css";
 
@@ -57,12 +61,26 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <body className={`${spaceGrotesk.variable} ${inter.variable} min-h-screen antialiased`}><Providers><RouteMetadata /><JsonLd /><LogoIntro />{children}</Providers></body>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} min-h-screen antialiased`}>
+        <GoogleAnalytics />
+        <Providers>
+          <RouteMetadata />
+          <JsonLd />
+          <LogoIntro />
+          {children}
+          <Chatbot />
+          <ConsentBanner />
+          <AnalyticsListener />
+        </Providers>
+      </body>
     </html>
   );
 }

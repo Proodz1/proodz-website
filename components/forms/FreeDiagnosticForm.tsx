@@ -4,6 +4,7 @@ import type { FormEvent, ReactNode } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "@/i18n/LanguageContext";
 import type { Translations } from "@/i18n/types";
+import { trackEvent } from "@/lib/analytics";
 import {
   IconCheck, IconArrowLeft, IconWhatsApp,
   IconRocket, IconTarget, IconMapPin, IconTrendingUp, IconBriefcase,
@@ -242,8 +243,18 @@ export default function FreeDiagnosticForm() {
         body: JSON.stringify(payload),
       });
       const data = (await res.json()) as { ok?: boolean };
-      if (res.ok && data.ok) setStatus("success");
-      else setStatus("error");
+      if (res.ok && data.ok) {
+        setStatus("success");
+        // Named conversion event. No PII (name/email/phone/message) is ever sent to GA4.
+        trackEvent("generate_lead", {
+          event_category: "conversion",
+          lead_type: "diagnostic_gratuit",
+          sector: payload.sectorSlug || undefined,
+          lang,
+        });
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     } finally {

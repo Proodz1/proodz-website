@@ -30,6 +30,7 @@ export default function Footer() {
     { href: "/accompagnement", label: t.nav.services },
     { href: "/portfolio", label: t.nav.portfolio },
     { href: "/methode", label: t.nav.method },
+    { href: "/a-propos", label: t.nav.about },
     { href: "/contact", label: t.nav.contact },
   ];
 
@@ -76,6 +77,8 @@ export default function Footer() {
             </a>
             <motion.a
               href="/contact"
+              data-ga-event="cta_click"
+              data-ga-label="footer_audit_gratuit"
               whileHover={{ scale: 1.05, y: -1, boxShadow: "0 6px 24px rgba(65,105,255,0.4)" }}
               whileTap={{ scale: 0.98 }}
               style={{ display: "inline-block", background: "#4361EE", color: "#fff", fontWeight: 700, fontSize: 14, padding: "10px 24px", borderRadius: 10, textDecoration: "none" }}

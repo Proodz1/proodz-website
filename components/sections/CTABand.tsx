@@ -50,6 +50,8 @@ export default function CTABand() {
           </motion.a>
           <motion.a
             href="/contact"
+            data-ga-event="cta_click"
+            data-ga-label="ctaband_form"
             whileHover={{ scale: 1.05, background: "rgba(255,255,255,0.18)", borderColor: "rgba(255,255,255,0.55)" }}
             whileTap={{ scale: 0.98 }}
             style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.1)", color: "#FFFFFF", fontWeight: 600, fontSize: 16, padding: "14px 32px", borderRadius: 12, textDecoration: "none", border: "1px solid rgba(255,255,255,0.32)", backdropFilter: "blur(4px)" }}

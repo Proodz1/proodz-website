@@ -14,6 +14,7 @@ function metaFor(pathname: string, t: Translations, lang: "fr" | "en"): Meta | n
   if (pathname.startsWith("/methode")) return t.seo.methode;
   if (pathname.startsWith("/contact")) return t.seo.contact;
   if (pathname.startsWith("/portfolio")) return t.seo.portfolio;
+  if (pathname.startsWith("/a-propos")) return t.seo.about;
   const m = pathname.match(/^\/secteurs\/([^/]+)/);
   if (m) {
     const sector = getSector(m[1]);

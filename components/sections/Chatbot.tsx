@@ -5,7 +5,11 @@ import Link from "next/link";
 import { useLang } from "@/i18n/LanguageContext";
 import { chatbotContent } from "@/lib/chatbot-content";
 import type { ChatOption } from "@/lib/chatbot-content";
+import { trackEvent } from "@/lib/analytics";
 import { IconMessageCircle, IconX, IconSend } from "../icons/Icons";
+
+const CONTACT_EMAIL = "contact@proodz.com";
+const CONTACT_PHONE = "+21694809417";
 
 interface Message {
   id: number;
@@ -101,7 +105,18 @@ export default function Chatbot() {
     setOpen(false);
     if (action.type === "link") return;
     if (action.type === "whatsapp") {
+      trackEvent("contact_click", { event_category: "contact", method: "whatsapp", source: "chatbot" });
       window.open(content.whatsappUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+    if (action.type === "call") {
+      trackEvent("contact_click", { event_category: "contact", method: "phone", source: "chatbot" });
+      window.location.assign(`tel:${CONTACT_PHONE}`);
+      return;
+    }
+    if (action.type === "email") {
+      trackEvent("contact_click", { event_category: "contact", method: "email", source: "chatbot" });
+      window.location.assign(`mailto:${CONTACT_EMAIL}`);
       return;
     }
     if (action.type === "diagnostic") {

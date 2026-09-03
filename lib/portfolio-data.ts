@@ -1,4 +1,4 @@
-export const categoryKeys = ["digital-presence", "audiovisual-production"] as const;
+export const categoryKeys = ["digital-presence"] as const;
 export type CategoryKey = (typeof categoryKeys)[number];
 export type ClientLang = "fr" | "en";
 
@@ -38,47 +38,8 @@ const synergyImages = Array.from({ length: 10 }, (_, i) => `/portfolio/synergy/s
 const glowEssenceImages = Array.from({ length: 9 }, (_, i) => `/portfolio/glow-essence/glow-essence-${i + 1}.png`);
 const cellsiusImages = Array.from({ length: 13 }, (_, i) => `/portfolio/cellsius/cellsius-img-${i + 1}.png`);
 const cellsiusVideos = Array.from({ length: 8 }, (_, i) => `/portfolio/cellsius/cellsius-video-${i + 1}.mp4`);
-const energyImages = Array.from({ length: 5 }, (_, i) => `/portfolio/energy/energy-${i + 1}.png`);
+const energyImages = Array.from({ length: 7 }, (_, i) => `/portfolio/energy/energy-${i + 1}.png`);
 const energyVideo = "/portfolio/energy/energy-video-1.mp4";
-const productionVideos = Array.from({ length: 35 }, (_, i) => `https://proodz.com/vid%C3%A9os/vid${i + 1}.mp4`);
-
-const productionVideoLabels: { fr: string; en: string }[] = [
-  { fr: "Nightlife & ambiance — Majorelle Tunis", en: "Nightlife & vibe — Majorelle Tunis" },
-  { fr: "DJ set Omar — Shahba Music", en: "DJ set Omar — Shahba Music" },
-  { fr: "Session musicale — Adnyl pour RoomRecords", en: "Music session — Adnyl for RoomRecords" },
-  { fr: "Campagne visuelle — Campagn Art", en: "Visual campaign — Campagn Art" },
-  { fr: "Session Not Even Noticed — Downtown Vibes", en: "Not Even Noticed session — Downtown Vibes" },
-  { fr: "Set Acid Minimal — Zarrouki pour RoomRecords", en: "Acid Minimal set — Zarrouki for RoomRecords" },
-  { fr: "Set DJ RoomRecords", en: "RoomRecords DJ set" },
-  { fr: "Soirée Bipolarity", en: "Bipolarity night" },
-  { fr: "Eyedentity — la magie de l'iris", en: "Eyedentity — the magic of the iris" },
-  { fr: "Masterclass culinaire — Chef Marc-Aurel", en: "Culinary masterclass — Chef Marc-Aurel" },
-  { fr: "Omnia Coffee Lounge — café & shisha", en: "Omnia Coffee Lounge — coffee & shisha" },
-  { fr: "4 essentiels pour chaque voyage", en: "4 essentials for every trip" },
-  { fr: "Teaser Matteo Bayrem — TOF", en: "Teaser Matteo Bayrem — TOF" },
-  { fr: "Functional Training — entraînement complet", en: "Functional Training — full workout" },
-  { fr: "Bitcall 5 — final", en: "Bitcall 5 — final" },
-  { fr: "BodyPump — Oxygène Fitness & Performance", en: "BodyPump — Oxygène Fitness & Performance" },
-  { fr: "Catamaran — croisière du 16 août", en: "Catamaran — August 16th cruise" },
-  { fr: "Cura Sinda V01", en: "Cura Sinda V01" },
-  { fr: "Crabe bleu — Académie des chefs", en: "Blue crab — Chefs Academy" },
-  { fr: "Recette tunisienne en partenariat Houita", en: "Tunisian recipe in partnership with Houita" },
-  { fr: "Aftermovie — nuit du 24 juin", en: "Aftermovie — the night of June 24th" },
-  { fr: "Frames — Maestro Bayrem", en: "Frames — Maestro Bayrem" },
-  { fr: "Petit-déjeuner chez Omnia — Ennasr", en: "Breakfast at Omnia — Ennasr" },
-  { fr: "Gravity V02", en: "Gravity V02" },
-  { fr: "Aftermovie — soirée du 23 juin", en: "Aftermovie — the evening of June 23rd" },
-  { fr: "Mayyass — session", en: "Mayyass — session" },
-  { fr: "Moma 01", en: "Moma 01" },
-  { fr: "Moma 02", en: "Moma 02" },
-  { fr: "Movari Islem V01", en: "Movari Islem V01" },
-  { fr: "Tunis Open 2025 — moments forts", en: "Tunis Open 2025 — highlights" },
-  { fr: "Lancement BodyPump 130 — Oxygène Lac 3", en: "BodyPump 130 launch — Oxygène Lac 3" },
-  { fr: "Smoothie Power", en: "Smoothie Power" },
-  { fr: "Production fais & client (WhatsApp)", en: "Fais client production (WhatsApp)" },
-  { fr: "Chez Omnia — Ennasr", en: "At Omnia — Ennasr" },
-  { fr: "Eyedentity — la beauté de vos yeux", en: "Eyedentity — the beauty of your eyes" },
-];
 
 export const clients: Client[] = [
   {
@@ -215,31 +176,11 @@ export const clients: Client[] = [
           ...energyImages.map((src, i) => ({
             type: "image" as const,
             src,
-            label: { fr: `Visuel Energy Rent a Car (${i + 1}/5)`, en: `Energy Rent a Car visual (${i + 1}/5)` },
+            label: { fr: `Visuel Energy Rent a Car (${i + 1}/7)`, en: `Energy Rent a Car visual (${i + 1}/7)` },
           })),
           { type: "video" as const, src: energyVideo, label: { fr: "Vidéo Energy Rent a Car (1/1)", en: "Energy Rent a Car video (1/1)" } },
         ],
         category: ["digital-presence"],
-      },
-    ],
-  },
-  {
-    name: "Proodz — Production Audiovisuelle",
-    sector: { fr: "Production audiovisuelle", en: "Audiovisual production" },
-    description: {
-      fr: "Production audiovisuelle Proodz : captations d'événements, vidéos musicales, sessions live, contenus réseaux sociaux et films de marque pour nos clients, du tournage au montage final.",
-      en: "Proodz audiovisual production: event coverage, music videos, live sessions, social media content and brand films for our clients, from filming to final edit.",
-    },
-    tags: { fr: ["Création vidéo", "Captation", "Montage"], en: ["Video creation", "Filming", "Editing"] },
-    projects: [
-      {
-        id: "av-1",
-        slides: productionVideos.map((src, i) => ({
-          type: "video" as const,
-          src,
-          label: productionVideoLabels[i] || { fr: `Production audiovisuelle (${i + 1}/35)`, en: `Audiovisual production (${i + 1}/35)` },
-        })),
-        category: ["audiovisual-production"],
       },
     ],
   },

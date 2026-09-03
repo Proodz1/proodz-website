@@ -1,21 +1,26 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/i18n/LanguageContext";
 import { IconMenu, IconX } from "@/components/icons/Icons";
 
+const MOBILE_MENU_ID = "mobile-nav-menu";
+
 export default function Navbar({ initialSolid = false }: { initialSolid?: boolean }) {
   const [scrolled, setScrolled] = useState(initialSolid);
   const [menuOpen, setMenuOpen] = useState(false);
   const { lang, t, toggle } = useLang();
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const links = [
     { href: "/", label: t.nav.home },
     { href: "/accompagnement", label: t.nav.services },
     { href: "/portfolio", label: t.nav.portfolio },
     { href: "/methode", label: t.nav.method },
+    { href: "/a-propos", label: t.nav.about },
     { href: "/contact", label: t.nav.contact },
   ];
 
@@ -24,6 +29,46 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    burgerRef.current?.focus();
+  };
+
+  // Lock background scroll, close on Escape, and trap Tab inside the
+  // open mobile menu so keyboard users never land on hidden content.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const firstLink = menuRef.current?.querySelector<HTMLElement>("a, button");
+    firstLink?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeMenu();
+        return;
+      }
+      if (e.key !== "Tab" || !menuRef.current) return;
+      const focusable = menuRef.current.querySelectorAll<HTMLElement>("a, button");
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen]);
 
   return (
     <motion.nav
@@ -119,6 +164,8 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
         </motion.button>
         <motion.a
           href="/contact"
+          data-ga-event="cta_click"
+          data-ga-label="nav_audit_gratuit"
           whileHover={{ scale: 1.05, y: -1, boxShadow: "0 6px 24px rgba(67,97,238,0.3)" }}
           whileTap={{ scale: 0.98 }}
           className="nav-cta-top"
@@ -137,6 +184,7 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
         </motion.a>
 
         <button
+          ref={burgerRef}
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
             display: "none",
@@ -150,6 +198,8 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
           }}
           className="nav-burger"
           aria-label={menuOpen ? t.misc.menuClose : t.misc.menuOpen}
+          aria-expanded={menuOpen}
+          aria-controls={MOBILE_MENU_ID}
         >
           {menuOpen ? <IconX size={22} /> : <IconMenu size={22} />}
         </button>
@@ -158,6 +208,11 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id={MOBILE_MENU_ID}
+            ref={menuRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={t.misc.menuOpen}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -174,6 +229,8 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
               display: "flex",
               flexDirection: "column",
               gap: 20,
+              maxHeight: "calc(100vh - 68px)",
+              overflowY: "auto",
             }}
             className="nav-mobile-menu"
           >
@@ -200,6 +257,8 @@ export default function Navbar({ initialSolid = false }: { initialSolid?: boolea
             ))}
             <motion.a
               href="/contact"
+              data-ga-event="cta_click"
+              data-ga-label="nav_mobile_audit_gratuit"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}

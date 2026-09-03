@@ -50,7 +50,7 @@ export default function Hero() {
           sizes="100vw"
           priority
           className="hero-bg"
-          style={{ objectFit: "cover", objectPosition: "center top" }}
+          style={{ objectFit: "cover", objectPosition: "center 32%" }}
           onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/visual-placeholder.svg"; }}
         />
         <div style={{ position: "absolute", inset: 0, background: "rgba(5,18,45,0.55)", pointerEvents: "none" }} />
@@ -72,10 +72,10 @@ export default function Hero() {
         </motion.p>
 
         <motion.div variants={heroButtons} initial="hidden" animate="visible" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 26 }}>
-          <motion.a href="/portfolio" whileHover={{ scale: 1.05, boxShadow: "0 8px 32px rgba(65,105,255,0.45)" }} whileTap={{ scale: 0.98 }} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#4361EE", color: "#fff", fontWeight: 700, fontSize: 15, padding: "14px 32px", borderRadius: 10, textDecoration: "none", transition: "background 0.2s" }}>
+          <motion.a href="/portfolio" data-ga-event="cta_click" data-ga-label="hero_portfolio" whileHover={{ scale: 1.05, boxShadow: "0 8px 32px rgba(65,105,255,0.45)" }} whileTap={{ scale: 0.98 }} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#4361EE", color: "#fff", fontWeight: 700, fontSize: 15, padding: "14px 32px", borderRadius: 10, textDecoration: "none", transition: "background 0.2s" }}>
             {t.hero.cta1} →
           </motion.a>
-          <motion.a href="/contact" whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.8)", background: "rgba(255,255,255,0.16)" }} whileTap={{ scale: 0.98 }} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.08)", color: "#FFFFFF", fontWeight: 500, fontSize: 15, padding: "14px 32px", borderRadius: 10, textDecoration: "none", border: "1px solid rgba(255,255,255,0.4)", backdropFilter: "blur(6px)" }}>
+          <motion.a href="/contact" data-ga-event="cta_click" data-ga-label="hero_audit_gratuit" whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.8)", background: "rgba(255,255,255,0.16)" }} whileTap={{ scale: 0.98 }} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.08)", color: "#FFFFFF", fontWeight: 500, fontSize: 15, padding: "14px 32px", borderRadius: 10, textDecoration: "none", border: "1px solid rgba(255,255,255,0.4)", backdropFilter: "blur(6px)" }}>
             {t.hero.cta2}
           </motion.a>
         </motion.div>

@@ -2,7 +2,9 @@ export type ChatAction =
   | { type: "bubble"; id: string }
   | { type: "link"; href: string }
   | { type: "diagnostic" }
-  | { type: "whatsapp" };
+  | { type: "whatsapp" }
+  | { type: "call" }
+  | { type: "email" };
 
 export interface ChatOption {
   label: string;
@@ -39,12 +41,16 @@ const WHATSAPP_URL =
 
 const DIAG: ChatAction = { type: "diagnostic" };
 const WA: ChatAction = { type: "whatsapp" };
+const CALL: ChatAction = { type: "call" };
+const EMAIL: ChatAction = { type: "email" };
 const MENU: ChatAction = { type: "bubble", id: "welcome" };
 
 const bubbleOption = (label: string, id: string): ChatOption => ({ label, action: { type: "bubble", id } });
 const linkOption = (label: string, href: string): ChatOption => ({ label, action: { type: "link", href } });
 const diagOption = (label: string): ChatOption => ({ label, action: DIAG });
 const waOption = (label: string): ChatOption => ({ label, action: WA });
+const callOption = (label: string): ChatOption => ({ label, action: CALL });
+const emailOption = (label: string): ChatOption => ({ label, action: EMAIL });
 const menuOption = (label: string): ChatOption => ({ label, action: MENU });
 
 const keywords: KeywordRule[] = [
@@ -78,7 +84,7 @@ export const chatbotContent: Record<ChatbotLocale, ChatbotContent> = {
           bubbleOption("Nos services", "services"),
           bubbleOption("Je veux plus de clients", "sectors"),
           bubbleOption("Demander un diagnostic gratuit", "diagnostic"),
-          waOption("Parler sur WhatsApp"),
+          bubbleOption("Nous contacter (WhatsApp, appel, e-mail)", "contact"),
         ],
       },
       discover: {
@@ -238,9 +244,11 @@ export const chatbotContent: Record<ChatbotLocale, ChatbotContent> = {
         ],
       },
       contact: {
-        text: "Le plus rapide est de nous écrire sur WhatsApp. Notre équipe répond rapidement, sans engagement.",
+        text: "Le plus rapide est de nous écrire sur WhatsApp. Vous pouvez aussi nous appeler ou nous écrire par e-mail.",
         options: [
           waOption("Parler sur WhatsApp"),
+          callOption("Appeler Proodz"),
+          emailOption("Écrire par e-mail"),
           diagOption("Demander un diagnostic"),
           menuOption("Retour au menu"),
         ],
@@ -273,7 +281,7 @@ export const chatbotContent: Record<ChatbotLocale, ChatbotContent> = {
           bubbleOption("Our services", "services"),
           bubbleOption("I want more customers", "sectors"),
           bubbleOption("Request a free diagnostic", "diagnostic"),
-          waOption("Chat on WhatsApp"),
+          bubbleOption("Contact us (WhatsApp, call, email)", "contact"),
         ],
       },
       discover: {
@@ -433,9 +441,11 @@ export const chatbotContent: Record<ChatbotLocale, ChatbotContent> = {
         ],
       },
       contact: {
-        text: "The fastest way is to message us on WhatsApp. Our team replies quickly, with no commitment.",
+        text: "The fastest way is to message us on WhatsApp. You can also call us or write to us by email.",
         options: [
           waOption("Chat on WhatsApp"),
+          callOption("Call Proodz"),
+          emailOption("Email us"),
           diagOption("Request a diagnostic"),
           menuOption("Back to menu"),
         ],

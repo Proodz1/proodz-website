@@ -10,7 +10,6 @@ import Services from "@/components/sections/Services";
 import Process from "@/components/sections/Process";
 import CTABand from "@/components/sections/CTABand";
 import ContactForm from "@/components/sections/ContactForm";
-import Chatbot from "@/components/sections/Chatbot";
 
 export default function Home() {
   return (
@@ -27,7 +26,6 @@ export default function Home() {
       <ContactForm />
 
       <Footer />
-      <Chatbot />
     </main>
   );
 }

@@ -385,38 +385,9 @@ function ProjectCard({ client }: { client: Client }) {
   );
 }
 
-function AudiovisualGrid({ client }: { client: Client }) {
-  const { t, lang } = useLang();
-  const project = client.projects[0];
-  const slides = project.slides.filter((s) => s.type === "video" && s.src !== "");
-
-  return (
-    <motion.article initial={false} className="audiovisual-project">
-      <h3 className="audiovisual-title">{t.portfolio.audiovisualTitle}</h3>
-      <div className="audiovisual-video-grid">
-        {slides.map((slide, i) => (
-          <div key={i} className="audiovisual-video-item">
-            <video
-              src={slide.src}
-              poster={slide.poster}
-              controls
-              controlsList="nodownload"
-              playsInline
-              muted
-              preload="metadata"
-              aria-label={slide.label?.[lang] || `Audiovisual — ${i + 1}`}
-            />
-          </div>
-        ))}
-      </div>
-    </motion.article>
-  );
-}
-
 function categoryLabels(key: CategoryKey, t: ReturnType<typeof useLang>["t"]): string {
   const map: Record<CategoryKey, string> = {
     "digital-presence": t.portfolio.digitalPresence,
-    "audiovisual-production": t.portfolio.audiovisualProduction,
   };
   return map[key];
 }
@@ -427,7 +398,6 @@ export default function Portfolio() {
 
   const categoryLabelsForFilter: Record<CategoryKey, string> = {
     "digital-presence": t.portfolio.digitalPresence,
-    "audiovisual-production": t.portfolio.audiovisualProduction,
   };
 
   const filteredClients = clients
@@ -487,10 +457,9 @@ export default function Portfolio() {
               transition={{ duration: 0.28 }}
               style={{ display: "flex", flexDirection: "column", gap: 28 }}
             >
-              {filteredClients.map((client) => {
-                const isAudiovisual = client.projects.some((p) => p.category.includes("audiovisual-production"));
-                return isAudiovisual ? <AudiovisualGrid key={client.name} client={client} /> : <ProjectCard key={client.name} client={client} />;
-              })}
+              {filteredClients.map((client) => (
+                <ProjectCard key={client.name} client={client} />
+              ))}
             </motion.div>
           </AnimatePresence>
 
@@ -596,38 +565,8 @@ export default function Portfolio() {
         .car-viewport:focus-visible { outline: 2px solid rgba(67,97,238,0.6); outline-offset: 2px; }
         .car-viewport::-webkit-scrollbar { display: none; }
 
-        .audiovisual-project { width: 100%; }
-        .audiovisual-title {
-          font-family: var(--font-space), 'Space Grotesk', sans-serif;
-          font-size: clamp(20px, 3vw, 32px);
-          font-weight: 800;
-          letter-spacing: -0.02em;
-          text-transform: uppercase;
-          color: #071B45;
-          margin: 0 0 32px;
-        }
-        .audiovisual-video-grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 24px;
-        }
-        .audiovisual-video-item {
-          border-radius: 14px;
-          overflow: hidden;
-          background: #FFFFFF;
-          border: 1px solid rgba(10,10,10,0.08);
-        }
-        .audiovisual-video-item video {
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-          background: transparent;
-          display: block;
-        }
-
 @media (max-width: 1024px) {
           .project-card { grid-template-columns: minmax(280px, 0.9fr) 1.1fr; gap: 32px; }
-          .audiovisual-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 900px) {
           .project-card { grid-template-columns: 1fr; gap: 28px; padding: 26px; }
@@ -648,8 +587,6 @@ export default function Portfolio() {
           .pf-filters::-webkit-scrollbar { display: none; }
           .pf-filter { flex-shrink: 0; }
           .project-card { padding: 20px; border-radius: 16px; }
-          .audiovisual-video-grid { grid-template-columns: 1fr; }
-          .audiovisual-title { margin-bottom: 20px; }
         }
         @media (max-width: 480px) {
           .pf-cta-bg { object-position: center 20% !important; }

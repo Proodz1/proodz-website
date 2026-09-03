@@ -12,12 +12,14 @@ export default function PageHero({
   title1,
   title2,
   supporting,
+  titleSize,
   children,
 }: {
   badge: string;
   title1: string;
   title2: string;
   supporting: string;
+  titleSize?: string;
   children?: ReactNode;
 }) {
   return (
@@ -43,7 +45,7 @@ export default function PageHero({
           <h1
             style={{
               fontFamily: "var(--font-space), 'Space Grotesk', sans-serif",
-              fontSize: "clamp(30px, 5vw, 56px)",
+              fontSize: titleSize || "clamp(30px, 5vw, 56px)",
               fontWeight: 800,
               lineHeight: 1.08,
               letterSpacing: "-0.03em",

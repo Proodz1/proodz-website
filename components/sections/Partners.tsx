@@ -5,8 +5,8 @@ import { fadeInUp } from "../animations/variants";
 import { useLang } from "@/i18n/LanguageContext";
 
 const featuredPartners = [
-  { name: "Monoprix", logo: "/logos/monoprix.svg" },
-  { name: "Energy Rent a Car", logo: "/logos/clients/energy-rent-a-car.png" },
+  { name: "Monoprix", logo: "/logos/monoprix.png" },
+  { name: "Energy Rent a Car", logo: "/logos/energy-rent-a-car.png" },
   { name: "Dar Al Hana", logo: "/logos/dar-al-hana.png" },
   { name: "Padel Pro Club", logo: "/logos/padel-pro-club.png" },
 ];
@@ -17,17 +17,21 @@ const partners = [
   { name: "Global Trust Finance", logo: "/logos/global-trust-finance.png" },
   { name: "Jasmin Travel", logo: "/logos/jasmin-travel.png" },
   { name: "PDS", logo: "/logos/pds.jpg" },
+  { name: "Académie Pro", logo: "/logos/academie-pro.png" },
   { name: "Carthage Estates", logo: "/logos/carthage-estates.png" },
   { name: "Carthage Motors", logo: "/logos/carthage-motors.png" },
   { name: "Elite Academy", logo: "/logos/elite-academy.png" },
   { name: "Aussui", logo: "/logos/aussui.jpg" },
-  { name: "Envnt", logo: "/logos/envnt.png" },
+  { name: "Envnt", logo: "/logos/envnt.jpg" },
   { name: "Synergy Partners", logo: "/logos/synergy-partners.png" },
   { name: "Padel Arena", logo: "/logos/padel-arena.png" },
   { name: "Glow Essence", logo: "/logos/glow-essence.png" },
   { name: "Luxe Furniture", logo: "/logos/luxe-furniture.png" },
   { name: "Pure Beauty", logo: "/logos/pure-beauty.png" },
   { name: "Global Heights", logo: "/logos/global-heights.png" },
+  { name: "Artisanat Design", logo: "/logos/artisanat-design.png" },
+  { name: "Wanderlust Expeditions", logo: "/logos/wanderlust-expeditions.png" },
+  { name: "Modern Living", logo: "/logos/modern-living.png" },
 ];
 
 function LogoTrack({ logos, speed, ...rest }: { logos: typeof partners; speed: number } & React.HTMLAttributes<HTMLDivElement>) {
@@ -37,7 +41,7 @@ function LogoTrack({ logos, speed, ...rest }: { logos: typeof partners; speed: n
       style={{
         display: "flex",
         alignItems: "center",
-        gap: 50,
+        gap: 20,
         flexShrink: 0,
         animation: `marquee ${speed}s linear infinite`,
       }}
@@ -51,22 +55,29 @@ function LogoTrack({ logos, speed, ...rest }: { logos: typeof partners; speed: n
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: 80,
+            width: 160,
+            height: 88,
+            background: "#FAFAFA",
+            border: "1px solid rgba(10,10,10,0.07)",
+            borderRadius: 14,
+            padding: "10px 16px",
+            boxSizing: "border-box",
           }}
         >
           <Image
             src={p.logo}
             alt={p.name}
-            width={150}
-            height={80}
+            width={128}
+            height={64}
             loading="lazy"
             style={{
-              height: 80,
-              width: 150,
+              maxHeight: 64,
+              maxWidth: 128,
+              width: "auto",
+              height: "auto",
               objectFit: "contain",
-              opacity: 0.75,
-              filter: "grayscale(15%) brightness(0.96)",
-              transition: "opacity 0.3s, filter 0.3s",
+              opacity: 0.85,
+              transition: "opacity 0.3s, transform 0.3s",
             }}
             onError={(e) => {
               const img = e.currentTarget;
@@ -74,12 +85,14 @@ function LogoTrack({ logos, speed, ...rest }: { logos: typeof partners; speed: n
               img.src = "/logo-placeholder.svg";
             }}
             onMouseEnter={(e) => {
-              (e.target as HTMLImageElement).style.opacity = "1";
-              (e.target as HTMLImageElement).style.filter = "grayscale(0%) brightness(1)";
+              const img = e.target as HTMLImageElement;
+              img.style.opacity = "1";
+              img.style.transform = "scale(1.05)";
             }}
             onMouseLeave={(e) => {
-              (e.target as HTMLImageElement).style.opacity = "0.75";
-              (e.target as HTMLImageElement).style.filter = "grayscale(15%) brightness(0.96)";
+              const img = e.target as HTMLImageElement;
+              img.style.opacity = "0.85";
+              img.style.transform = "scale(1)";
             }}
           />
         </div>
@@ -142,8 +155,8 @@ export default function Partners() {
               <Image
                 src={p.logo}
                 alt={p.name}
-                width={220}
-                height={64}
+                width={240}
+                height={88}
                 style={{ objectFit: "contain" }}
                 className="pf-featured-logo"
                 onError={(e) => {
@@ -168,8 +181,8 @@ export default function Partners() {
           WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
         }}
       >
-        <LogoTrack logos={partners} speed={40} />
-        <LogoTrack logos={partners} speed={40} aria-hidden="true" />
+        <LogoTrack logos={partners} speed={55} />
+        <LogoTrack logos={partners} speed={55} aria-hidden="true" />
       </div>
 
       <style>{`
@@ -183,20 +196,25 @@ export default function Partners() {
         .pf-featured-card {
           width: 100%;
           max-width: 240px;
-          min-height: 96px;
+          min-height: 112px;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #FFFFFF;
+          background: #FAFAFA;
           border: 1px solid rgba(10,10,10,0.08);
           border-radius: 16px;
           box-shadow: 0 8px 28px rgba(7,27,69,0.07);
-          padding: 22px 28px;
+          padding: 18px 24px;
           box-sizing: border-box;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .pf-featured-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 36px rgba(7,27,69,0.12);
         }
         .pf-featured-logo {
           width: auto;
-          height: 56px;
+          height: 76px;
           max-width: 100%;
         }
         @media (max-width: 900px) {
@@ -205,8 +223,8 @@ export default function Partners() {
         }
         @media (max-width: 640px) {
           .pf-featured { margin-bottom: 52px; }
-          .pf-featured-card { min-height: 88px; padding: 16px 18px; }
-          .pf-featured-logo { height: 44px; }
+          .pf-featured-card { min-height: 100px; padding: 14px 16px; }
+          .pf-featured-logo { height: 60px; }
         }
         @media (max-width: 480px) {
           .pf-featured-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -214,7 +232,7 @@ export default function Partners() {
         }
         @keyframes marquee {
           from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+          to { transform: translateX(-100%); }
         }
         .marquee-track {
           will-change: transform;

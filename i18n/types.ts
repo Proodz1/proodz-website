@@ -4,6 +4,7 @@ export interface Translations {
     services: string;
     portfolio: string;
     method: string;
+    about: string;
     contact: string;
     cta: string;
     homeAria: string;
@@ -105,10 +106,8 @@ export interface Translations {
     subtitle: string;
     all: string;
     digitalPresence: string;
-    audiovisualProduction: string;
-    uxDesign: string;
     webDevelopment: string;
-    audiovisualTitle: string;
+    uxDesign: string;
     statsWorks: string;
     statsSectors: string;
     statsCountries: string;
@@ -312,6 +311,7 @@ export interface Translations {
     methode: { title: string; description: string };
     contact: { title: string; description: string };
     portfolio: { title: string; description: string };
+    about: { title: string; description: string };
   };
   notFound: {
     code: string;
@@ -327,5 +327,36 @@ export interface Translations {
     skipIntro: string;
     skipIntroShort: string;
     whatsapp: string;
+    call: string;
+    email: string;
+  };
+  cookieConsent: {
+    message: string;
+    accept: string;
+    reject: string;
+  };
+  // À propos page
+  aboutPage: {
+    label: string;
+    title1: string;
+    title2: string;
+    intro: string;
+    historyTitle: string;
+    historyText: string;
+    historyPlaceholder: string;
+    missionTitle: string;
+    missionText: string;
+    valueAddTitle: string;
+    valueAddSubtitle: string;
+    valuesTitle: string;
+    valuesSubtitle: string;
+    experienceTitle: string;
+    experienceStats: { value: string; label: string }[];
+    geoTitle: string;
+    geoText: string;
+    ctaTitle1: string;
+    ctaTitle2: string;
+    ctaText: string;
+    ctaBtn: string;
   };
 }
