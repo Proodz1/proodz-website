@@ -136,11 +136,22 @@ async function deliverEmail(lead: Lead): Promise<{ ok: boolean; error?: string }
 }
 
 async function recordFallback(lead: Lead): Promise<void> {
+  const isServerless = !!process.env.NETLIFY || !!process.env.VERCEL || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
   const dir =
     process.env.LEADS_DIR ||
-    path.join(/* turbopackIgnore: true */ process.cwd(), "var", "leads");
-  await fs.mkdir(dir, { recursive: true });
-  await fs.appendFile(path.join(dir, "diagnostic.jsonl"), JSON.stringify(lead) + "\n", "utf8");
+    (isServerless
+      ? path.join("/tmp", "leads")
+      : path.join(/* turbopackIgnore: true */ process.cwd(), "var", "leads"));
+  try {
+    await fs.mkdir(dir, { recursive: true });
+    await fs.appendFile(path.join(dir, "diagnostic.jsonl"), JSON.stringify(lead) + "\n", "utf8");
+  } catch (err) {
+    if (isServerless) {
+      console.warn("[contact] serverless FS not writable, lead logged to console only:", JSON.stringify(lead));
+      return;
+    }
+    throw err;
+  }
 }
 
 export async function POST(request: Request): Promise<NextResponse> {
